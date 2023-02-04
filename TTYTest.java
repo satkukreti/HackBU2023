@@ -11,12 +11,13 @@ public class TTYTest {
 
 		// The rows / columns of TTY will be printed out
 		// --> however, I have to simulate VK_ENTER as it awaits my ENTER input
-		// new Robot().keyPress(KeyEvent.VK_ENTER);
+		new Robot().keyPress(KeyEvent.VK_ENTER);
 
 		// read the stdin "^[[30;120R" -> "30;120"
-		final var sb = new StringBuilder();
+		StringBuilder sb = new StringBuilder();
 		while (System.in.available() != -1) {
 			char ch = (char) System.in.read();
+			System.out.println(ch);
 			if (ch == 'R')
 				break;
 			if (Character.isDigit(ch) || ch == ';')

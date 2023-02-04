@@ -1,9 +1,20 @@
+import java.io.IOException;
+
 class Program {
+	
 	public static void main(String[] args) {
 		// System.out.println("\u001b[1mThis should be colored different\u001b[0m");
 		// System.out.println("\u001b[9mThis should be struck through\u001b[29m");
 		// System.out.println("\u001b[9AAAAAAAAAAAAAAAAUUUUUUUUUUUUGGGGGGGGGHHHH");
 		//
+		int[] terminalSize = new int[1];
+		try {
+			terminalSize = getTerminalSize();
+		} catch (IOException e) {
+			terminalSize[0] = 10;
+			terminalSize[1] = 10;
+		}
+		
 		Vector[][] v = new Vector[10][];
 		for (int i = 0; i < v.length;i++) {
 			v[i] = new Vector[10];
@@ -42,6 +53,23 @@ class Program {
 				}
 				System.out.println();
 			}
+	}
+	private static int[] getTerminalSize() throws IOException {
+		final var sb = new StringBuilder();
+		while (System.in.available() != -1) {
+			char ch = (char) System.in.read();
+			System.out.println(ch);
+			if (ch == 'R')
+				break;
+			if (Character.isDigit(ch) || ch == ';')
+				sb.append(ch);
+		}
+		String[] rowColumn = sb.toString().split(";");
+		int[] result = new int[1];
+		result[0] = Integer.parseInt(rowColumn[0]);
+		result[1] = Integer.parseInt(rowColumn[1]);
+		return result;
+
 	}
 
 
