@@ -1,3 +1,5 @@
+import java.text.DecimalFormat;
+
 public class Point {
 	public final double x;
 	public final double y;
@@ -13,4 +15,12 @@ public class Point {
 	public String toString() {
 		return "(" + x + "," + y + "," + z + ")";
 	} 
+	public String toString(int places){
+		String p = "###.";
+		for(int i = 0; i < places; i++){
+			p += "#";
+		}
+		DecimalFormat df = new DecimalFormat(p);
+		return "(" + df.format(x) + "," + df.format(y) + "," + df.format(z) + ")";
+	}
 }
