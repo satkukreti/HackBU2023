@@ -2,14 +2,14 @@ import java.util.*;
 import java.io.*;
 
 public class ReadSTL {
-    public static void main(String[] args) {
+    public ArrayList<Triangle> main(String filename) {
         // makes ArrayList of vertices
         ArrayList<Triangle> arr = new ArrayList<>();
 
 
         Scanner f = new Scanner("");
         try {
-            f = new Scanner(new File(args[0]));
+            f = new Scanner(new File(filename));
         } catch (Exception e) {
             System.exit(0);
         }
@@ -32,6 +32,8 @@ public class ReadSTL {
                 String[] strArr3 = l.split("\\s+");
                 t.setC(new Vertex(Double.parseDouble(strArr3[2]), Double.parseDouble(strArr3[3]), Double.parseDouble(strArr3[4])));
 
+                t.setMidpoint();
+
                 arr.add(t);
             }
         }
@@ -39,8 +41,10 @@ public class ReadSTL {
         f.close();
         
 
-        for (Triangle t: arr) {
-            System.out.println(t);
-        }
+        // for (Triangle t: arr) {
+        //     System.out.println(t);
+        // }
+
+        return arr;
     } 
 }
