@@ -2,6 +2,7 @@ public class Triangle {
     private Vertex a;
     private Vertex b;
     private Vertex c;
+    private Vertex midpoint;
 
     Triangle(Vertex a, Vertex b, Vertex c) {
         this.a=a;
@@ -15,11 +16,16 @@ public class Triangle {
     public Vertex getB() {return b;};
     public Vertex getC() {return c;};
 
+    public void setMidpoint() {
+        midpoint = new Vertex((a.getA() + b.getA() + c.getA())/3, (a.getB() + b.getB() + c.getB())/3, 
+        (a.getC() + b.getC() + c.getC())/3);
+    }
+
     public void setA(Vertex a) {this.a=a;};
     public void setB(Vertex b) {this.b=b;};
     public void setC(Vertex c) {this.c=c;};
 
     public String toString() {
-        return "(" + a + ", " + b + ", " + c + ")";
+        return "(" + a + ", " + b + ", " + c + ", " + midpoint + ")";
     }
 }
