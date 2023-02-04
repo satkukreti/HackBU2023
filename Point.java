@@ -1,5 +1,3 @@
-import java.lang.reflect.Constructor;
-
 public class Point {
 	public final double x;
 	public final double y;
