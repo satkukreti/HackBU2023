@@ -15,9 +15,9 @@ class Program {
 			terminalSize[1] = 10;
 		}
 		
-		Vector[][] v = new Vector[10][];
+		Vector[][] v = new Vector[terminalSize[0]][];
 		for (int i = 0; i < v.length;i++) {
-			v[i] = new Vector[10];
+			v[i] = new Vector[terminalSize[1]];
 			for (int j = 0; j < v[0].length;j++){
 				if (i==j) v[i][j] = new Vector(0);
 				else v[i][j] = new Vector(1);
@@ -45,7 +45,7 @@ class Program {
 			for (int i = 0; i < v.length;i++) {
 				for (int j = 0; j < v[0].length; j++) {
 					if (v[i][j].color == 1) {
-						System.out.print("0");
+						System.out.print("\u2588");
 					}
 					else {
 						System.out.print(" ");
@@ -57,7 +57,7 @@ class Program {
 	private static int[] getTerminalSize() throws IOException {
 		System.out.println("Please press ENTER");
 		System.out.println("\033[999;999H\033[6n");
-		final var sb = new StringBuilder();
+		StringBuilder sb = new StringBuilder();
 		while (System.in.available() != -1) {
 			char ch = (char) System.in.read();
 			System.out.println(ch);
