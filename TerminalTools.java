@@ -13,29 +13,19 @@ public class TerminalTools {
     }
     public static final String ESCAPE = "\u001b";
     public static void moveUp(int spaces) {
-        System.out.print(ESCAPE);
-        System.out.print(spaces);
-        System.out.print("A");
+        System.out.print(ESCAPE + "[" + spaces + "A");
     }
     public static void moveDown(int spaces) {
-        System.out.print(ESCAPE);
-        System.out.print(spaces);
-        System.out.print("B");
+        System.out.print(ESCAPE + "[" + spaces + "B");
     }
     public static void moveLeft(int spaces) {
-        System.out.print(ESCAPE);
-        System.out.print(spaces);
-        System.out.print("C");
+        System.out.print(ESCAPE + "[" + spaces + "C");
     }
     public static void moveRight(int spaces) {
-        System.out.print(ESCAPE);
-        System.out.print(spaces);
-        System.out.print("D");
+        System.out.print(ESCAPE + "[" + spaces + "D");
     }
     public static void moveToColumn(int column) {
-        System.out.print(ESCAPE);
-        System.out.print(column);
-        System.out.print("G");
+        System.out.print(ESCAPE + "[" + column + "G");
     }
     public static void hideCursor() {
         System.out.print(ESCAPE);
