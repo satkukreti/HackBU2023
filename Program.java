@@ -1,7 +1,8 @@
 import java.io.IOException;
 
 class Program {
-	
+	public static int terminalHeight;
+	public static int terminalWidth;
 	public static void main(String[] args) {
 		// System.out.println("\u001b[1mThis should be colored different\u001b[0m");
 		// System.out.println("\u001b[9mThis should be struck through\u001b[29m");
@@ -11,14 +12,16 @@ class Program {
 		try {
 			terminalSize = getTerminalSize();
 		} catch (IOException e) {
-			terminalSize[0] = 10;
-			terminalSize[1] = 10;
+			terminalHeight = 10;
+			terminalWidth = 10;
+			
 		}
-		
-		Vector[][] v = new Vector[terminalSize[0]][];
+		terminalHeight = terminalSize[1];
+		terminalWidth = terminalSize[0];
+		Vector[][] v = new Vector[terminalWidth][];
 		double m = 0;
 		for (int i = 0; i < v.length;i++) {
-			v[i] = new Vector[terminalSize[1]];
+			v[i] = new Vector[terminalHeight];
 			double y = v.length;
 			double x = v[i].length;
 			m = y/x;
@@ -52,20 +55,20 @@ class Program {
 			this.color = color;
 		}
 	}
+	
 	private static void draw(Vector[][] v) {
 		System.out.print("\u001b[?25l");
-			System.out.print("\u001b[" + v.length + "A");
-			for (int i = 0; i < v.length;i++) {
-				for (int j = 0; j < v[0].length; j++) {
-					if (v[i][j].color == 1) {
-						System.out.print("\u2588");
-					}
-					else {
-						System.out.print(" ");
-					}
+		System.out.print("\u001b[" + v.length + "A");
+		for (int i = 0; i < v.length; i++) {
+			for (int j = 0; j < v[0].length; j++) {
+				if (v[i][j].color == 1) {
+					System.out.print("0");
+				} else {
+					System.out.print(" ");
 				}
-				System.out.println();
 			}
+			System.out.println();
+		}
 	}
 	private static int[] getTerminalSize() throws IOException {
 		System.out.println("Please press ENTER");
@@ -81,7 +84,7 @@ class Program {
 		}
 		String[] rowColumn = sb.toString().split(";");
 		int[] result = new int[2];
-		result[0] = Integer.parseInt(rowColumn[0]);
+		result[0] = Integer.parseInt(rowColumn[0]) - 2;
 		result[1] = Integer.parseInt(rowColumn[1]);
 		return result;
 	}
