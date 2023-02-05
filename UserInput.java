@@ -14,21 +14,41 @@ public class UserInput {
         public void keyPressed(KeyEvent e) {
           int keyCode = e.getKeyCode();
           if (keyCode == KeyEvent.VK_W) {
-            //System.out.println("Up Arrrow-Key is pressed!");
-            Window.up();
+            Window.wpress();
           }
           else if (keyCode == KeyEvent.VK_S) {
-            //System.out.println("Down Arrrow-Key is pressed!");
-            Window.down();
+            Window.spress();
           }
           else if (keyCode == KeyEvent.VK_A) {
-            //System.out.println("Left Arrrow-Key is pressed!");
-            Window.left();
+            Window.apress();
           }
           else if (keyCode == KeyEvent.VK_D) {
-           //System.out.println("Right Arrrow-Key is pressed!");
-           Window.right();
+           Window.dpress();
           }
+          else if (keyCode == KeyEvent.VK_Q) {
+            Window.qpress();
+           }
+           else if (keyCode == KeyEvent.VK_R) {
+            Window.rpress();
+           }
+           else if (keyCode == KeyEvent.VK_E) {
+            Window.epress();
+           }
+           else if (keyCode == KeyEvent.VK_F) {
+            Window.fpress();
+           }
+           else if (keyCode == KeyEvent.VK_UP) {
+            Window.uppress();
+           }
+           else if (keyCode == KeyEvent.VK_DOWN) {
+            Window.downpress();
+           }
+           else if (keyCode == KeyEvent.VK_LEFT) {
+            Window.leftpress();
+           }
+           else if (keyCode == KeyEvent.VK_RIGHT) {
+            Window.rightpress();
+           }
         }
       });
 
