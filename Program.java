@@ -16,20 +16,33 @@ class Program {
 		}
 		
 		Vector[][] v = new Vector[terminalSize[0]][];
+		double m = 0;
 		for (int i = 0; i < v.length;i++) {
 			v[i] = new Vector[terminalSize[1]];
+			double y = v.length;
+			double x = v[i].length;
+			m = y/x;
 			for (int j = 0; j < v[0].length;j++){
-				if (i==j) v[i][j] = new Vector(0);
+				if(i == 0 && j == 0){
+					v[i][j] = new Vector(0);
+				}
+				else if ((int)i== (int)(m*j)){
+					v[i][j] = new Vector(0);
+				}
 				else v[i][j] = new Vector(1);
 			}
 		}
 		int permutation = 0;
+		int limit = v.length;
 		while (true) {
 			draw(v);
-			if (v[permutation][permutation].color ==1) v[permutation][permutation].color = 0;
-			else v[permutation][permutation].color = 1;
+			for(int i = 0; i < v[0].length; i++){
+				if (v[permutation][i].color ==1) v[permutation][i].color = 0;
+				else v[permutation][i].color = 1;
+			}
+			
 			permutation++;
-			permutation %=10;
+			permutation %=limit;
 
 		}
 	}
@@ -71,7 +84,6 @@ class Program {
 		result[0] = Integer.parseInt(rowColumn[0]);
 		result[1] = Integer.parseInt(rowColumn[1]);
 		return result;
-
 	}
 
 
