@@ -25,7 +25,7 @@ public class TerminalTools {
         System.out.print(ESCAPE + "[" + spaces + "D");
     }
     public static void moveToColumn(int column) {
-        System.out.print(ESCAPE + "[" + spaces + "G");
+        System.out.print(ESCAPE + "[" + column + "G");
     }
     public static void hideCursor() {
         System.out.print(ESCAPE);
