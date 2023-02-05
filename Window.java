@@ -22,13 +22,13 @@ public class Window {
 		for (int i = 0; i < printArray.length; i++) {
 			for (int j = 0; j < printArray[0].length; j++) {
 				Pixel currentPoint = printArray[i][j];
-				if (currentPoint.notBackground) {
+				if (!currentPoint.notBackground) {
 					// ALlows the flicking of the things we want to draw
 					if (flip) {
 						System.out.print(currentPoint.color + currentPoint.shade
 								+ "\u2588");
 					} else {
-						System.out.print(currentPoint.color + currentPoint.shade + "");
+						System.out.print(currentPoint.color + currentPoint.shade + " ");
 					}
 					
 				} else {
@@ -40,9 +40,14 @@ public class Window {
 	}
 	public void print() {
 		boolean flip = false;
+		int flickerDuration = 0;
 		while (true) {
-			flip = !flip;
+			if (flickerDuration > 10) {
+				flip = !flip;
+				flickerDuration = 0;
+			}
 			this.draw(flip);
+			flickerDuration++;
 		}
 	}
 	public Pixel[][] getPrintArray() {
